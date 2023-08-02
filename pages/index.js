@@ -1,12 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import SplineScene from '@/components/SplineScene'
 import { useState } from 'react'
-import { Box, Grid, Container, Stack, Typography, Button, SpeedDial, SpeedDialAction} from '@mui/material'
+import { Box, Grid, Container, Stack, Typography, Button, SpeedDial, SpeedDialAction, Skeleton} from '@mui/material'
 import TopNavigationBar from '@/components/NavBar'
 import { Roboto } from 'next/font/google';
 import imageOne from '../public/Game_Controls.png';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import dynamic from 'next/dynamic'
+
+const DynamicSplineScene = dynamic(() => import('../components/SplineScene'), {
+  loading: () => <Skeleton animation="wave" 
+                           sx= {
+                                  {
+                                    borderRadius: '20px',
+                                    overflow: 'hidden',
+                                  }
+                               } 
+                           variant="rectangular" 
+                           width={'100%'} 
+                           height={'100%'} />,
+  ssr: false,
+})
 
 const roboto = Roboto({
   weight: ['100', '300', '400','500', '700', '900'],
@@ -86,7 +100,9 @@ export default function Home() {
                 
                 </SpeedDial>
                 : ''}
-              <SplineScene isOpen={isOpen}/>
+              
+          <DynamicSplineScene isOpen={isOpen}/> 
+             
           </Container>
         </Grid>
       </Grid>
