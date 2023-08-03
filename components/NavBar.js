@@ -9,10 +9,10 @@ const roboto = Roboto({
   weight: ['100', '300', '400','500', '700', '900'],
   subsets: ['latin'],
 });
-export default function TopNavigationBar({props}) {
+export default function TopNavigationBar({isOpen}) {
   return (
   
-      <AppBar color='default' elevation={1} sx={{padding: '0rem 6rem 0rem 6rem'}}>
+      <AppBar color='default' elevation={1} sx={{padding: '0rem 6rem 0rem 6rem', display: isOpen ? 'none' : ''}} className='navBar'>
         <Toolbar disableGutters sx={{display: 'flex', justifyContent: 'center'}}>
           <VideogameAssetIcon fontSize='large' sx={{ mr: 1,  display: {xs: 'none' ,sm: 'none', md: 'block'} }} />
           <Typography 

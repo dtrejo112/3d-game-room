@@ -60,7 +60,7 @@ a {
   padding-top: 2rem;
 }
 .purpleButtonEnd {
-  background-color: #FFE5E5;
+  background-color: #FFE5E5 !important;
   position: absolute;
   margin: 1rem 0rem 0rem 1rem;
 }
@@ -68,5 +68,10 @@ a {
   .splineOpen {
     width: 90%,
 
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 600px){
+  .navBar {
+    display: none;
   }
 }

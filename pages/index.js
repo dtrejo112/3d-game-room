@@ -39,12 +39,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title> 3D Game - Cat Room</title>
+        <title> 3D Game - Cat Room </title>
         <meta name="description" content="A 3D room with a cat in it" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="../public/3d-room-thumbnail.png" />
       </Head>
-      <TopNavigationBar />
+      <TopNavigationBar isOpen={isOpen}/>
       <Grid 
             container 
             spacing={{ xs: 2, md: 3 }} 
@@ -80,28 +81,18 @@ export default function Home() {
               </Box>
              </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={isOpen ? 12 : 7} sx={{height: '100vh'}}>
+        <Grid item xs={12} sm={12} md={isOpen ? 12 : 7} sx={{height: '100vh', paddingTop: isOpen ? '0px !important' : ''}}>
           <Container sx={{
                          width: '100%', 
                          height: '100%', 
-                         minHeight: {xs: '660px', md: '720px'},
+                         minHeight: '100%',
                          maxHeight: '100vw',
                          maxWidth: '100vw !important', 
-                         padding: isOpen ? '2.5rem 0rem 0rem 0rem !important' : '6rem 2rem 1rem 2rem'
+                         padding: isOpen ? '0rem 0rem 0rem 0rem !important' : '6rem 2rem 1rem 2rem'
                         }}>
-              {isOpen ? 
-                <SpeedDial 
-                    ariaLabel='Speed dial UI menu for 3D game'
-                    sx={{ position: 'fixed', left: '2rem', top: '36rem'}}
-                    icon={<PowerSettingsNewIcon />}
-                    direction='right'
-                    onClick={handleClose}
-                >
-                
-                </SpeedDial>
-                : ''}
+             
               
-          <DynamicSplineScene isOpen={isOpen}/> 
+          <DynamicSplineScene isOpen={isOpen} setIsOpen={setIsOpen}/> 
              
           </Container>
         </Grid>
